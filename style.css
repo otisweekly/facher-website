@@ -1,4 +1,4 @@
-/* FACH Design System — Matching iOS App */
+/* Fach Design System */
 
 /* PP Kyoto — Headlines */
 @font-face {
@@ -44,9 +44,8 @@
 }
 
 :root {
-    /* FACH Brand Colors — from Color+Shelf.swift */
+    /* Fach Brand Colors */
     --fach-red: #FF2F00;
-    --fach-red-hover: #E62A00;
     --fach-ink: #1A1918;
     --fach-secondary: #4A4640;
     --fach-muted: #7D7770;
@@ -54,31 +53,26 @@
     --fach-background: #F5F5F5;
     --fach-card: #FFFFFF;
     --fach-cream: #FFFCF7;
-
-    /* Cool Grays */
     --cool-gray-900: #1F2023;
-    --cool-gray-800: #2D2F33;
-    --cool-gray-200: #E0E1E5;
 
-    /* Typography — matching Font+Shelf.swift */
+    /* Typography */
     --font-display: 'PP Kyoto', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'PP Neue Montreal', -apple-system, BlinkMacSystemFont, sans-serif;
 
-    /* Spacing — 8pt grid */
-    --space-xs: 0.5rem;   /* 8px */
-    --space-sm: 1rem;     /* 16px */
-    --space-md: 1.5rem;   /* 24px */
-    --space-lg: 2rem;     /* 32px */
-    --space-xl: 3rem;     /* 48px */
-    --space-2xl: 5rem;    /* 80px */
-    --space-3xl: 8rem;    /* 128px */
+    /* Spacing (8pt grid) */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 5rem;
+    --space-3xl: 8rem;
 }
 
 html {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
 }
 
 body {
@@ -88,29 +82,28 @@ body {
     line-height: 1.6;
 }
 
-/* Selection — FACH red */
 ::selection {
     background: var(--fach-red);
     color: white;
 }
 
-/* Navigation — matching app header */
+/* Navigation */
 nav {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--fach-divider);
     z-index: 100;
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -118,16 +111,11 @@ nav {
 
 .logo {
     font-family: var(--font-display);
-    font-size: 1.375rem;
-    font-weight: 800;
+    font-size: 1.25rem;
+    font-weight: 600;
     color: var(--fach-ink);
     text-decoration: none;
     letter-spacing: -0.02em;
-    transition: color 0.2s ease;
-}
-
-.logo:hover {
-    color: var(--fach-red);
 }
 
 .nav-links {
@@ -141,130 +129,164 @@ nav {
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: color 0.2s;
 }
 
 .nav-links a:hover {
     color: var(--fach-ink);
 }
 
-/* Main content */
+/* Main */
 main {
     padding-top: 60px;
 }
 
-/* Hero section */
+/* Hero */
 .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     min-height: calc(100vh - 60px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-3xl) var(--space-lg);
+    gap: var(--space-3xl);
     align-items: center;
-    text-align: center;
-    padding: var(--space-2xl) var(--space-md);
-    background: var(--fach-card);
-    position: relative;
-    overflow: hidden;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(255, 47, 0, 0.04) 0%, transparent 65%);
-    pointer-events: none;
+.hero-content {
+    max-width: 480px;
+}
+
+.hero-label {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--fach-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-md);
 }
 
 .hero-tagline {
     font-family: var(--font-display);
-    font-size: clamp(3.5rem, 14vw, 10rem);
-    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
     color: var(--fach-ink);
-    line-height: 0.85;
-    letter-spacing: -0.04em;
-    margin-bottom: var(--space-lg);
-    animation: fadeUp 0.8s ease-out;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-sm);
 }
 
-.hero-tagline span {
-    display: block;
-}
-
-.hero-tagline .accent {
-    color: var(--fach-red);
-}
-
-.subtitle {
+.hero-subtitle {
     font-family: var(--font-body);
-    font-size: 1.1875rem;
-    font-weight: 400;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--fach-ink);
+    margin-bottom: var(--space-md);
+}
+
+.hero-description {
+    font-size: 1.125rem;
     color: var(--fach-secondary);
-    max-width: 440px;
-    margin: 0 auto var(--space-xl);
     line-height: 1.65;
-    animation: fadeUp 0.8s ease-out 0.1s both;
+    margin-bottom: var(--space-xl);
 }
 
-.app-store-badge {
+.cta-button {
     display: inline-block;
-    animation: fadeUp 0.8s ease-out 0.2s both;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: opacity 0.2s, transform 0.2s;
 }
 
-.app-store-badge img {
-    height: 52px;
+.cta-button img {
+    height: 48px;
 }
 
-.app-store-badge:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+.cta-button:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
 }
 
-/* Features section */
-.features {
-    background: var(--fach-background);
-    padding: var(--space-3xl) var(--space-md);
+/* Hero visual — abstract grid */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.features-inner {
-    max-width: 1000px;
-    margin: 0 auto;
+.hero-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12px;
+    width: 320px;
+    height: 400px;
+}
+
+.grid-item {
+    background: var(--fach-background);
+    border-radius: 12px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: scale(1.03);
+}
+
+.gi-1 {
+    grid-column: span 2;
+    background: linear-gradient(135deg, var(--fach-background) 0%, #E8E4DC 100%);
+}
+
+.gi-2 {
+    background: var(--fach-ink);
+}
+
+.gi-3 {
+    grid-row: span 2;
+    background: var(--fach-red);
+}
+
+.gi-4 {
+    background: linear-gradient(180deg, #D4A04A 0%, #BF7C2A 100%);
+}
+
+.gi-5 {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #6B8264 0%, #4A5E45 100%);
+}
+
+.gi-6 {
+    background: var(--fach-background);
+}
+
+/* Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-3xl) var(--space-lg);
+    gap: var(--space-xl);
+    border-top: 1px solid var(--fach-divider);
 }
 
 .feature {
-    background: var(--fach-card);
-    border-radius: 16px;
-    padding: var(--space-lg);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-right: var(--space-lg);
 }
 
-.feature:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 32px rgba(26, 25, 24, 0.08);
-}
-
-.feature-icon {
-    width: 48px;
-    height: 48px;
+.feature-number {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--fach-muted);
+    letter-spacing: 0.05em;
+    display: block;
     margin-bottom: var(--space-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--fach-background);
-    border-radius: 12px;
-    color: var(--fach-red);
 }
 
 .feature h3 {
     font-family: var(--font-display);
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--fach-ink);
     margin-bottom: var(--space-xs);
@@ -272,133 +294,115 @@ main {
 }
 
 .feature p {
-    font-family: var(--font-body);
-    color: var(--fach-secondary);
-    line-height: 1.65;
     font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--fach-secondary);
 }
 
-/* Categories section */
-.categories {
-    padding: var(--space-3xl) var(--space-md);
-    text-align: center;
-    background: var(--fach-card);
+/* Collections */
+.collections {
+    background: var(--fach-background);
+    padding: var(--space-3xl) var(--space-lg);
 }
 
-.categories h2 {
+.collections-header {
+    max-width: 1280px;
+    margin: 0 auto var(--space-xl);
+}
+
+.collections-header h2 {
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 600;
     color: var(--fach-ink);
+    letter-spacing: -0.02em;
     margin-bottom: var(--space-xs);
-    letter-spacing: -0.03em;
 }
 
-.categories-subtitle {
-    font-family: var(--font-body);
+.collections-header p {
+    font-size: 1rem;
     color: var(--fach-secondary);
-    font-size: 1.0625rem;
-    margin-bottom: var(--space-xl);
 }
 
-.category-grid {
-    max-width: 640px;
-    margin: 0 auto;
+.collection-pills {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
+    gap: 0.625rem;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
-.category {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.125rem;
-    background: var(--fach-background);
+.pill {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--fach-ink);
+    background: var(--fach-card);
+    padding: 0.625rem 1.125rem;
     border-radius: 100px;
-    transition: all 0.25s ease;
+    border: 1px solid var(--fach-divider);
+    transition: all 0.2s;
     cursor: default;
 }
 
-.category:hover {
+.pill:hover {
     background: var(--fach-ink);
-}
-
-.category:hover span:last-child {
     color: white;
+    border-color: var(--fach-ink);
 }
 
-.category-icon {
-    font-size: 1.125rem;
-    line-height: 1;
+.pill-more {
+    color: var(--fach-muted);
+    background: transparent;
+    border-color: transparent;
 }
 
-.category span:last-child {
-    font-family: var(--font-body);
-    font-weight: 500;
+.pill-more:hover {
+    background: transparent;
     color: var(--fach-ink);
-    font-size: 0.875rem;
-    transition: color 0.25s ease;
+    border-color: transparent;
 }
 
-/* CTA section — dark like app Settings background */
-.cta {
+/* CTA Section */
+.cta-section {
     background: var(--cool-gray-900);
-    padding: var(--space-3xl) var(--space-md);
+    padding: var(--space-3xl) var(--space-lg);
+}
+
+.cta-content {
+    max-width: 1280px;
+    margin: 0 auto;
     text-align: center;
-    position: relative;
-    overflow: hidden;
 }
 
-.cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at center top, rgba(255, 47, 0, 0.12) 0%, transparent 55%);
-    pointer-events: none;
-}
-
-.cta h2 {
+.cta-content h2 {
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 5vw, 3rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 600;
     color: var(--fach-cream);
+    letter-spacing: -0.02em;
     margin-bottom: var(--space-xs);
-    letter-spacing: -0.03em;
-    position: relative;
 }
 
-.cta p {
-    font-family: var(--font-body);
-    font-size: 1.0625rem;
-    color: rgba(255, 252, 247, 0.65);
+.cta-content p {
+    font-size: 1rem;
+    color: rgba(255, 252, 247, 0.6);
     margin-bottom: var(--space-lg);
-    position: relative;
-}
-
-.cta .app-store-badge {
-    position: relative;
 }
 
 /* Footer */
 footer {
     background: var(--fach-card);
     border-top: 1px solid var(--fach-divider);
-    padding: var(--space-lg) var(--space-md);
+    padding: var(--space-lg) var(--space-lg);
 }
 
 .footer-container {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: var(--space-md);
 }
 
 .footer-brand .logo {
@@ -407,9 +411,8 @@ footer {
 }
 
 .footer-brand p {
-    font-family: var(--font-body);
-    color: var(--fach-muted);
     font-size: 0.8125rem;
+    color: var(--fach-muted);
 }
 
 .footer-links {
@@ -418,12 +421,11 @@ footer {
 }
 
 .footer-links a {
-    font-family: var(--font-body);
+    font-size: 0.8125rem;
     color: var(--fach-muted);
     text-decoration: none;
-    font-size: 0.8125rem;
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: color 0.2s;
 }
 
 .footer-links a:hover {
@@ -434,38 +436,36 @@ footer {
 .legal-page {
     max-width: 640px;
     margin: 0 auto;
-    padding: var(--space-3xl) var(--space-md);
+    padding: var(--space-3xl) var(--space-lg);
 }
 
 .legal-page h1 {
     font-family: var(--font-display);
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 600;
     color: var(--fach-ink);
     margin-bottom: var(--space-xs);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
 }
 
 .legal-page .last-updated {
-    font-family: var(--font-body);
-    color: var(--fach-muted);
     font-size: 0.875rem;
+    color: var(--fach-muted);
     margin-bottom: var(--space-xl);
 }
 
 .legal-page h2 {
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     color: var(--fach-ink);
     margin-top: var(--space-xl);
     margin-bottom: var(--space-sm);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
 .legal-page h3 {
-    font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 600;
     color: var(--fach-ink);
     margin-top: var(--space-md);
@@ -473,9 +473,8 @@ footer {
 }
 
 .legal-page p {
-    font-family: var(--font-body);
     margin-bottom: var(--space-sm);
-    line-height: 1.75;
+    line-height: 1.7;
 }
 
 .legal-page ul {
@@ -484,73 +483,68 @@ footer {
 }
 
 .legal-page li {
-    font-family: var(--font-body);
     margin-bottom: var(--space-xs);
-    line-height: 1.7;
+    line-height: 1.65;
 }
 
 .legal-page a {
     color: var(--fach-red);
     text-decoration: none;
-    transition: opacity 0.2s ease;
 }
 
 .legal-page a:hover {
-    opacity: 0.7;
+    text-decoration: underline;
 }
 
 /* Support page */
 .support-page {
     max-width: 520px;
     margin: 0 auto;
-    padding: var(--space-3xl) var(--space-md);
-    text-align: center;
+    padding: var(--space-3xl) var(--space-lg);
 }
 
 .support-page h1 {
     font-family: var(--font-display);
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 600;
     color: var(--fach-ink);
     margin-bottom: var(--space-sm);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
+    text-align: center;
 }
 
 .support-page .intro {
-    font-family: var(--font-body);
-    font-size: 1.0625rem;
+    font-size: 1rem;
     color: var(--fach-secondary);
     margin-bottom: var(--space-xl);
+    text-align: center;
 }
 
 .support-card {
     background: var(--fach-background);
     border-radius: 16px;
     padding: var(--space-lg);
-    text-align: left;
 }
 
 .support-card h2 {
     font-family: var(--font-display);
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--fach-ink);
     margin-bottom: var(--space-sm);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
 .support-card h3 {
-    font-family: var(--font-body);
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: var(--fach-ink);
 }
 
 .support-card p {
-    font-family: var(--font-body);
     color: var(--fach-secondary);
     margin-bottom: var(--space-md);
-    line-height: 1.65;
+    line-height: 1.6;
     font-size: 0.9375rem;
 }
 
@@ -560,37 +554,56 @@ footer {
     gap: 0.5rem;
     color: var(--fach-red);
     text-decoration: none;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 1rem;
-    transition: opacity 0.2s ease;
+    font-weight: 500;
+    font-size: 0.9375rem;
 }
 
 .support-email:hover {
-    opacity: 0.7;
-}
-
-/* Animations */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    text-decoration: underline;
 }
 
 /* Responsive */
 @media (max-width: 900px) {
-    .features-inner {
+    .hero {
         grid-template-columns: 1fr;
-        max-width: 480px;
+        gap: var(--space-xl);
+        padding: var(--space-2xl) var(--space-md);
+        min-height: auto;
+    }
+
+    .hero-visual {
+        order: -1;
+    }
+
+    .hero-grid {
+        width: 280px;
+        height: 350px;
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+        padding: var(--space-2xl) var(--space-md);
+    }
+
+    .feature {
+        padding-right: 0;
+        padding-bottom: var(--space-lg);
+        border-bottom: 1px solid var(--fach-divider);
+    }
+
+    .feature:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .nav-container {
         padding: 0.875rem 1rem;
     }
@@ -605,31 +618,22 @@ footer {
 
     .hero {
         padding: var(--space-xl) var(--space-sm);
-        min-height: calc(100vh - 56px);
     }
 
-    .hero-tagline {
-        margin-bottom: var(--space-md);
+    .hero-grid {
+        width: 240px;
+        height: 300px;
     }
 
-    .subtitle {
-        font-size: 1.0625rem;
-        padding: 0 var(--space-xs);
-    }
-
-    .features {
+    .collections {
         padding: var(--space-2xl) var(--space-sm);
     }
 
-    .feature {
-        padding: var(--space-md);
+    .collection-pills {
+        justify-content: center;
     }
 
-    .categories {
-        padding: var(--space-2xl) var(--space-sm);
-    }
-
-    .cta {
+    .cta-section {
         padding: var(--space-2xl) var(--space-sm);
     }
 
@@ -640,18 +644,11 @@ footer {
     }
 
     .footer-links {
-        flex-wrap: wrap;
         justify-content: center;
-        gap: var(--space-sm);
     }
 
     .legal-page,
     .support-page {
         padding: var(--space-2xl) var(--space-sm);
-    }
-
-    .legal-page h1,
-    .support-page h1 {
-        font-size: 1.875rem;
     }
 }
