@@ -29,28 +29,25 @@
         <section class="hero">
             <div class="hero-background"></div>
 
-            <!-- Full screen animated shelf -->
+            <!-- Animated shelf — exact iOS LaunchAnimationView specs -->
             <div class="shelf-animation">
-                <div class="spine vinyl" style="--delay: 0"></div>
-                <div class="spine book" style="--delay: 1"></div>
-                <div class="spine vinyl" style="--delay: 2"></div>
-                <div class="spine book tall" style="--delay: 3"></div>
-                <div class="spine vinyl" style="--delay: 4"></div>
-                <div class="spine book" style="--delay: 5"></div>
-                <div class="spine vinyl" style="--delay: 6"></div>
-                <div class="spine book wide" style="--delay: 7"></div>
-                <div class="spine vinyl" style="--delay: 8"></div>
-                <div class="spine book" style="--delay: 9"></div>
-                <div class="spine gap"></div>
-                <div class="spine book leaner" style="--delay: 10"></div>
-                <div class="spine vinyl" style="--delay: 11"></div>
-                <div class="spine book" style="--delay: 12"></div>
-                <div class="spine vinyl" style="--delay: 13"></div>
-                <div class="spine book tall" style="--delay: 14"></div>
-                <div class="spine vinyl" style="--delay: 15"></div>
-                <div class="spine book wide" style="--delay: 16"></div>
-                <div class="spine vinyl" style="--delay: 17"></div>
-                <div class="spine book" style="--delay: 18"></div>
+                <!-- 5 vinyl spines (7px width, 280px height) -->
+                <div class="spine s0" style="--i: 0"></div>
+                <div class="spine s1" style="--i: 1"></div>
+                <div class="spine s2" style="--i: 2"></div>
+                <div class="spine s3" style="--i: 3"></div>
+                <div class="spine s4" style="--i: 4"></div>
+                <!-- 6 book spines (varying) -->
+                <div class="spine s5" style="--i: 5"></div>
+                <div class="spine s6" style="--i: 6"></div>
+                <div class="spine s7" style="--i: 7"></div>
+                <div class="spine s8" style="--i: 8"></div>
+                <div class="spine s9" style="--i: 9"></div>
+                <div class="spine s10" style="--i: 10"></div>
+                <!-- Gap before leaner -->
+                <div class="spine-gap"></div>
+                <!-- The leaner -->
+                <div class="spine s11 leaner" style="--i: 11"></div>
             </div>
 
             <!-- Minimal typography in negative space -->
@@ -76,54 +73,95 @@
             <div class="features-grid">
                 <div class="feature">
                     <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
-                            <path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/>
-                            <path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
-                            <rect x="7" y="7" width="10" height="10" rx="1"/>
-                        </svg>
+                        <img src="/icons/scan.svg" alt="" class="icon">
                     </div>
                     <h3>Scan anything</h3>
-                    <p>Point your camera at a cover or barcode. We'll identify it across 31 categories—books, vinyl, magazines, cameras, watches, and more.</p>
+                    <p>Point your camera at a cover or barcode. We identify it across 31 categories—books, vinyl, magazines, cameras, watches, and more.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 6v6l4 2"/>
-                        </svg>
+                        <img src="/icons/discover.svg" alt="" class="icon">
                     </div>
                     <h3>Daily picks</h3>
-                    <p>Get mood-based recommendations every day. What to read when it's raining. What to spin during a full moon. Pulled from your own collection.</p>
+                    <p>Mood-based recommendations every day. What to read when it's raining. What to spin during a full moon. From your own collection.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
-                            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
-                        </svg>
+                        <img src="/icons/trends.svg" alt="" class="icon">
                     </div>
-                    <h3>Everywhere you are</h3>
-                    <p>Sign in with Apple and your collection syncs across all your devices. Never lose track of what you own.</p>
+                    <h3>Weekly reports</h3>
+                    <p>See your collection grow. Trends, stats, and insights delivered to you each week. Know your shelves better than ever.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Showcase Section -->
-        <section class="showcase">
-            <div class="showcase-inner">
-                <div class="showcase-card">
-                    <div class="showcase-icon">🍽️</div>
-                    <h3>Supper Club</h3>
-                    <p>Planning a dinner party? Pick your cookbooks and let Fach generate a complete menu with wine pairings and a curated playlist.</p>
+        <!-- Generator Section -->
+        <section class="generator">
+            <div class="generator-inner">
+                <div class="generator-header">
+                    <p class="generator-eyebrow">The Generator</p>
+                    <h2>More than a catalog.</h2>
+                    <p class="generator-subtitle">Your collection becomes a creative engine.</p>
                 </div>
-                <div class="showcase-card">
-                    <div class="showcase-icon">🎵</div>
-                    <h3>Apple Music</h3>
-                    <p>Your vinyl collection connects to Apple Music. One tap to play any record digitally—no turntable required.</p>
+                <div class="generator-grid">
+                    <div class="generator-card">
+                        <img src="/icons/pairings.svg" alt="" class="icon">
+                        <h3>Supper Club</h3>
+                        <p>Select cookbooks, generate a complete dinner party—menu, wine pairings, playlist, and cocktail recipes.</p>
+                    </div>
+                    <div class="generator-card">
+                        <img src="/icons/record-play.svg" alt="" class="icon">
+                        <h3>Playlist mode</h3>
+                        <p>Build the perfect listening session from your vinyl. Describe a mood and watch it come together.</p>
+                    </div>
+                    <div class="generator-card">
+                        <img src="/icons/vibe.svg" alt="" class="icon">
+                        <h3>Discovery engine</h3>
+                        <p>Find what to explore next based on what you already love. Personalized recommendations, not algorithms.</p>
+                    </div>
+                    <div class="generator-card">
+                        <img src="/icons/music-link.svg" alt="" class="icon">
+                        <h3>Apple Music</h3>
+                        <p>Your vinyl links to Apple Music. One tap to play any record digitally—no turntable required.</p>
+                    </div>
                 </div>
-                <div class="showcase-card">
-                    <div class="showcase-icon">💬</div>
-                    <h3>Chat with your shelf</h3>
-                    <p>Ask questions about your collection. "What should I read next?" or "Show me my first edition hardcovers."</p>
+            </div>
+        </section>
+
+        <!-- Chat Section -->
+        <section class="chat-section">
+            <div class="chat-inner">
+                <div class="chat-content">
+                    <img src="/icons/mic.svg" alt="" class="chat-icon">
+                    <h2>Talk to your shelf.</h2>
+                    <p>Ask anything. "What should I read next?" or "Show me books from the 1960s" or "Which records are worth the most?"</p>
+                    <p class="chat-examples">"Recommend something for a rainy Sunday" • "Find my first editions" • "What pairs with this cookbook?"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- More Features -->
+        <section class="more-features">
+            <div class="more-features-inner">
+                <div class="more-feature">
+                    <img src="/icons/loan.svg" alt="" class="icon">
+                    <h3>Lending library</h3>
+                    <p>Track who borrowed what. Get reminders. Never lose a book again.</p>
+                </div>
+                <div class="more-feature">
+                    <img src="/icons/share.svg" alt="" class="icon">
+                    <h3>Instagram import</h3>
+                    <p>Already posting your collection? Import directly from your saved posts.</p>
+                </div>
+                <div class="more-feature">
+                    <img src="/icons/collection.svg" alt="" class="icon">
+                    <h3>Export everything</h3>
+                    <p>Your data is yours. Export as CSV or JSON anytime.</p>
+                </div>
+                <div class="more-feature">
+                    <img src="/icons/star.svg" alt="" class="icon">
+                    <h3>Stories</h3>
+                    <p>Daily picks presented beautifully. Swipe through like your favorite app.</p>
                 </div>
             </div>
         </section>

@@ -206,64 +206,93 @@ nav.scrolled .nav-links a {
     letter-spacing: 0.01em;
 }
 
-/* Full Screen Animated Shelf — Commanding presence */
+/* Animated Shelf — Exact iOS LaunchAnimationView specs */
+/* Scale factor: 2.5x for full-screen drama */
 .shelf-animation {
     position: relative;
     width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: 4px;
+    gap: 17.5px; /* 7px × 2.5 */
     height: 85vh;
-    padding-bottom: 0;
+    padding: 0 80px;
     z-index: 1;
 }
 
 .spine {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 3px;
+    background: #F5F5F5;
+    border-radius: 5px;
     transform-origin: bottom center;
-    animation: slideUp 0.15s ease-out both, settle 0.1s ease-out both;
-    animation-delay: calc(var(--delay) * 40ms), calc(var(--delay) * 40ms + 150ms);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    /* Phase 2: 120ms slide, 50ms stagger */
+    animation: slideUp 0.12s ease-out both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s);
 }
 
-/* Vinyl spines — thin, full height */
-.spine.vinyl {
-    width: 10px;
-    height: 75vh;
+/* Gap before leaner — 40px × 2.5 = 100px */
+.spine-gap {
+    width: 100px;
+    flex-shrink: 0;
 }
 
-/* Book spines — varying widths, dramatic heights */
-.spine.book {
-    width: 32px;
-    height: 65vh;
+/* Exact iOS dimensions scaled 2.5x */
+/* Vinyl spines: 7px → 17.5px, 280px → 700px (capped at 70vh) */
+.spine.s0, .spine.s1, .spine.s2, .spine.s3, .spine.s4 {
+    width: 17.5px;
+    height: min(700px, 70vh);
 }
 
-.spine.book.tall {
-    height: 80vh;
-    width: 36px;
+/* Book spines with exact iOS heights */
+.spine.s5  { width: 55px;   height: min(465px, 46.5vh); }  /* 22×186 → 55×465 */
+.spine.s6  { width: 72.5px; height: min(565px, 56.5vh); }  /* 29×226 → 72.5×565 */
+.spine.s7  { width: 72.5px; height: min(500px, 50vh); }    /* 29×200 → 72.5×500 */
+.spine.s8  { width: 55px;   height: min(400px, 40vh); }    /* 22×160 → 55×400 */
+.spine.s9  { width: 72.5px; height: min(480px, 48vh); }    /* 29×192 → 72.5×480 */
+.spine.s10 { width: 72.5px; height: min(590px, 59vh); }    /* 29×236 → 72.5×590 */
+.spine.s11 { width: 72.5px; height: min(515px, 51.5vh); }  /* 29×206 → 72.5×515 (leaner) */
+
+/* Settle animation — scale pulse after slide */
+.spine {
+    animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both;
+    animation-delay:
+        calc(0.2s + var(--i) * 0.05s),
+        calc(0.2s + var(--i) * 0.05s + 0.12s);
 }
 
-.spine.book.wide {
-    width: 44px;
-    height: 70vh;
-}
-
-/* Gap before leaner */
-.spine.gap {
-    width: 16px;
-    background: transparent;
-    box-shadow: none;
-}
-
-/* The leaner — triggers cascade */
+/* The leaner — Phase 3: lean after all spines placed */
 .spine.leaner {
-    width: 40px;
-    height: 72vh;
-    animation: slideUp 0.15s ease-out both, settle 0.1s ease-out both, lean 0.5s ease-out both;
-    animation-delay: calc(var(--delay) * 40ms), calc(var(--delay) * 40ms + 150ms), 1s;
+    animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, lean 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay:
+        calc(0.2s + var(--i) * 0.05s),
+        calc(0.2s + var(--i) * 0.05s + 0.12s),
+        calc(0.2s + 11 * 0.05s + 0.2s); /* leanStartTime from iOS */
 }
+
+/* Cascade: books tilt when "hit" by leaner */
+/* iOS: maxTilt -2° for books, -0.8° for vinyl, 15% falloff per spine */
+.spine.s10 { animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, cascadeBook 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s), calc(0.2s + var(--i) * 0.05s + 0.12s), calc(0.2s + 11 * 0.05s + 0.2s + 0.1s); --tilt: -1.7deg; }
+.spine.s9  { animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, cascadeBook 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s), calc(0.2s + var(--i) * 0.05s + 0.12s), calc(0.2s + 11 * 0.05s + 0.2s + 0.125s); --tilt: -1.4deg; }
+.spine.s8  { animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, cascadeBook 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s), calc(0.2s + var(--i) * 0.05s + 0.12s), calc(0.2s + 11 * 0.05s + 0.2s + 0.15s); --tilt: -1.1deg; }
+.spine.s7  { animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, cascadeBook 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s), calc(0.2s + var(--i) * 0.05s + 0.12s), calc(0.2s + 11 * 0.05s + 0.2s + 0.175s); --tilt: -0.8deg; }
+.spine.s6  { animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, cascadeBook 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s), calc(0.2s + var(--i) * 0.05s + 0.12s), calc(0.2s + 11 * 0.05s + 0.2s + 0.2s); --tilt: -0.5deg; }
+.spine.s5  { animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, cascadeBook 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s), calc(0.2s + var(--i) * 0.05s + 0.12s), calc(0.2s + 11 * 0.05s + 0.2s + 0.225s); --tilt: -0.3deg; }
+
+/* Vinyl cascade — subtler tilt */
+.spine.s4  { animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, cascadeVinyl 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s), calc(0.2s + var(--i) * 0.05s + 0.12s), calc(0.2s + 11 * 0.05s + 0.2s + 0.25s); --tilt: -0.68deg; }
+.spine.s3  { animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, cascadeVinyl 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s), calc(0.2s + var(--i) * 0.05s + 0.12s), calc(0.2s + 11 * 0.05s + 0.2s + 0.275s); --tilt: -0.56deg; }
+.spine.s2  { animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, cascadeVinyl 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s), calc(0.2s + var(--i) * 0.05s + 0.12s), calc(0.2s + 11 * 0.05s + 0.2s + 0.3s); --tilt: -0.44deg; }
+.spine.s1  { animation: slideUp 0.12s ease-out both, settle 0.08s ease-out both, cascadeVinyl 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(0.2s + var(--i) * 0.05s), calc(0.2s + var(--i) * 0.05s + 0.12s), calc(0.2s + 11 * 0.05s + 0.2s + 0.325s); --tilt: -0.32deg; }
 
 @keyframes slideUp {
     from {
@@ -278,25 +307,25 @@ nav.scrolled .nav-links a {
 
 @keyframes settle {
     0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(1.01); }
+    50% { transform: scaleY(1.02); }
 }
 
 @keyframes lean {
     0% { transform: rotate(0deg); }
     40% { transform: rotate(-14deg); }
-    100% { transform: rotate(-10deg); }
+    100% { transform: rotate(-12deg); }
 }
 
-/* Cascade effect on other spines */
-.shelf-animation:has(.leaner) .spine:not(.leaner):not(.gap) {
-    animation: slideUp 0.15s ease-out both, settle 0.1s ease-out both, cascade 0.6s ease-out both;
-    animation-delay: calc(var(--delay) * 40ms), calc(var(--delay) * 40ms + 150ms), calc(1.2s + (18 - var(--delay)) * 25ms);
-}
-
-@keyframes cascade {
+@keyframes cascadeBook {
     0% { transform: rotate(0deg); }
-    30% { transform: rotate(calc(-3deg * (1 - var(--delay) / 20))); }
-    100% { transform: rotate(calc(-1.5deg * (1 - var(--delay) / 20))); }
+    60% { transform: rotate(var(--tilt)); }
+    100% { transform: rotate(calc(var(--tilt) * 0.5)); }
+}
+
+@keyframes cascadeVinyl {
+    0% { transform: rotate(0deg); }
+    60% { transform: rotate(var(--tilt)); }
+    100% { transform: rotate(calc(var(--tilt) * 0.5)); }
 }
 
 /* Scroll hint — subtle in corner */
@@ -442,6 +471,175 @@ nav.scrolled .nav-links a {
     font-size: 0.8125rem;
     line-height: 1.65;
     color: rgba(255, 252, 247, 0.6);
+}
+
+/* Icon styling */
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.feature-icon .icon {
+    filter: brightness(0) saturate(100%) invert(24%) sepia(98%) saturate(5765%) hue-rotate(11deg) brightness(98%) contrast(108%);
+}
+
+/* Generator Section */
+.generator {
+    padding: 6rem 1.5rem;
+    background: var(--fach-background);
+}
+
+.generator-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.generator-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.generator-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--fach-red);
+    margin-bottom: 0.75rem;
+}
+
+.generator-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 600;
+    color: var(--fach-ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.generator-subtitle {
+    font-size: 1rem;
+    color: var(--fach-secondary);
+}
+
+.generator-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+.generator-card {
+    background: var(--fach-card);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid var(--fach-divider);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.generator-card:hover {
+    border-color: var(--fach-ink);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.generator-card .icon {
+    margin-bottom: 1rem;
+    filter: none;
+}
+
+.generator-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--fach-ink);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.generator-card p {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--fach-secondary);
+}
+
+/* Chat Section */
+.chat-section {
+    padding: 5rem 1.5rem;
+    background: var(--fach-red);
+}
+
+.chat-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.chat-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.5rem;
+    filter: brightness(0) invert(1);
+}
+
+.chat-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+    color: white;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+}
+
+.chat-section p {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+}
+
+.chat-examples {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+/* More Features Section */
+.more-features {
+    padding: 5rem 1.5rem;
+    background: var(--fach-card);
+}
+
+.more-features-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.more-feature {
+    text-align: center;
+}
+
+.more-feature .icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 1rem;
+}
+
+.more-feature h3 {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--fach-ink);
+    margin-bottom: 0.375rem;
+    letter-spacing: -0.01em;
+}
+
+.more-feature p {
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--fach-secondary);
 }
 
 /* Collections Section */
@@ -746,16 +944,21 @@ footer {
     }
 
     .shelf-animation {
-        gap: 3px;
+        gap: 10px;
+        padding: 0 20px;
         height: 80vh;
     }
 
-    .spine.vinyl { width: 7px; height: 70vh; }
-    .spine.book { width: 22px; height: 58vh; }
-    .spine.book.tall { width: 26px; height: 75vh; }
-    .spine.book.wide { width: 30px; height: 64vh; }
-    .spine.gap { width: 10px; }
-    .spine.leaner { width: 28px; height: 66vh; }
+    /* Mobile: scale down by ~60% */
+    .spine.s0, .spine.s1, .spine.s2, .spine.s3, .spine.s4 { width: 10px; height: min(420px, 65vh); }
+    .spine.s5  { width: 33px; height: min(280px, 38vh); }
+    .spine.s6  { width: 44px; height: min(340px, 48vh); }
+    .spine.s7  { width: 44px; height: min(300px, 42vh); }
+    .spine.s8  { width: 33px; height: min(240px, 34vh); }
+    .spine.s9  { width: 44px; height: min(288px, 40vh); }
+    .spine.s10 { width: 44px; height: min(354px, 50vh); }
+    .spine.s11 { width: 44px; height: min(309px, 44vh); }
+    .spine-gap { width: 50px; }
 
     .scroll-hint {
         right: 1.25rem;
@@ -780,12 +983,13 @@ footer {
     }
 }
 
-/* Showcase responsive */
+/* Sections responsive */
 @media (max-width: 768px) {
     .features-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
         max-width: 400px;
+        margin: 0 auto;
     }
 
     .feature {
@@ -804,6 +1008,31 @@ footer {
 
     .showcase-card {
         padding: 1.5rem;
+    }
+
+    .generator-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .generator-card {
+        padding: 1.25rem;
+    }
+
+    .more-features-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .generator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .more-features-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
