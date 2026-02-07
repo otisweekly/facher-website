@@ -6,9 +6,10 @@
     <title>Fach — Obsess properly</title>
     <meta name="description" content="Your personal collection catalog. Organize books, vinyl, magazines, and collectibles in one beautiful app.">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <meta property="og:title" content="Fach — Obsess properly">
-    <meta property="og:description" content="Your personal collection catalog. Organize books, vinyl, magazines, and collectibles in one beautiful app.">
+    <meta property="og:description" content="Your personal collection catalog.">
+    <meta property="og:image" content="/app-icon.png">
     <meta property="og:type" content="website">
 </head>
 <body>
@@ -24,69 +25,98 @@
     </nav>
 
     <main>
+        <!-- Hero with animated shelf -->
         <section class="hero">
+            <div class="hero-background"></div>
             <div class="hero-content">
-                <p class="hero-label">Fach · German for shelf</p>
+                <img src="/logo.svg" alt="Fach" class="hero-logo">
                 <h1 class="hero-tagline">Obsess properly.</h1>
                 <p class="hero-subtitle">Your personal collection catalog.</p>
-                <p class="hero-description">
-                    Scan a barcode or snap a photo. We'll identify your books, vinyl, and collectibles, then organize them on your shelf.
-                </p>
-                <a href="#" class="cta-button">
-                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-                </a>
             </div>
-            <div class="hero-visual">
-                <div class="hero-grid">
-                    <div class="grid-item gi-1"></div>
-                    <div class="grid-item gi-2"></div>
-                    <div class="grid-item gi-3"></div>
-                    <div class="grid-item gi-4"></div>
-                    <div class="grid-item gi-5"></div>
-                    <div class="grid-item gi-6"></div>
+
+            <!-- Animated shelf spines -->
+            <div class="shelf-animation">
+                <div class="spine vinyl" style="--delay: 0"></div>
+                <div class="spine book" style="--delay: 1"></div>
+                <div class="spine vinyl" style="--delay: 2"></div>
+                <div class="spine book tall" style="--delay: 3"></div>
+                <div class="spine vinyl" style="--delay: 4"></div>
+                <div class="spine book" style="--delay: 5"></div>
+                <div class="spine vinyl" style="--delay: 6"></div>
+                <div class="spine book wide" style="--delay: 7"></div>
+                <div class="spine vinyl" style="--delay: 8"></div>
+                <div class="spine book" style="--delay: 9"></div>
+                <div class="spine gap"></div>
+                <div class="spine book leaner" style="--delay: 10"></div>
+            </div>
+
+            <a href="#download" class="scroll-hint">
+                <span>Scroll</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </a>
+        </section>
+
+        <!-- Features -->
+        <section class="features" id="download">
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                            <path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+                            <path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+                            <rect x="7" y="7" width="10" height="10" rx="1"/>
+                        </svg>
+                    </div>
+                    <h3>Scan to add</h3>
+                    <p>Point your camera at any item. Scan barcodes or snap a photo—we'll identify it.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                            <path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/>
+                            <path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/>
+                            <path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/>
+                        </svg>
+                    </div>
+                    <h3>Rich metadata</h3>
+                    <p>Track lists, synopses, cover art—fetched automatically. Everything you need.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+                        </svg>
+                    </div>
+                    <h3>Sync everywhere</h3>
+                    <p>Your collection syncs across devices. Sign in with Apple to keep it backed up.</p>
                 </div>
             </div>
         </section>
 
-        <section class="features">
-            <div class="feature">
-                <span class="feature-number">01</span>
-                <h3>Scan to add</h3>
-                <p>Point your camera at any item. Scan barcodes for instant lookup, or snap a photo and we'll identify it for you.</p>
-            </div>
-            <div class="feature">
-                <span class="feature-number">02</span>
-                <h3>Rich metadata</h3>
-                <p>Track lists, synopses, cover art, and editorial content—fetched automatically. Everything you need to know.</p>
-            </div>
-            <div class="feature">
-                <span class="feature-number">03</span>
-                <h3>Sync everywhere</h3>
-                <p>Your collection syncs securely across all your devices. Sign in with Apple to keep everything backed up.</p>
-            </div>
-        </section>
-
+        <!-- Collections -->
         <section class="collections">
-            <div class="collections-header">
+            <div class="collections-inner">
                 <h2>Your shelf, your rules.</h2>
-                <p>Create shelves for anything you collect.</p>
-            </div>
-            <div class="collection-pills">
-                <span class="pill">Books</span>
-                <span class="pill">Vinyl</span>
-                <span class="pill">Magazines</span>
-                <span class="pill">Art</span>
-                <span class="pill">Cameras</span>
-                <span class="pill">Watches</span>
-                <span class="pill pill-more">+ More</span>
+                <p class="collections-subtitle">Create shelves for anything you collect.</p>
+                <div class="pills">
+                    <span class="pill">Books</span>
+                    <span class="pill">Vinyl</span>
+                    <span class="pill">Magazines</span>
+                    <span class="pill">Art</span>
+                    <span class="pill">Cameras</span>
+                    <span class="pill">Watches</span>
+                </div>
             </div>
         </section>
 
-        <section class="cta-section">
-            <div class="cta-content">
+        <!-- CTA -->
+        <section class="cta">
+            <div class="cta-inner">
                 <h2>Start cataloging today.</h2>
                 <p>Free to download. Your first 10 scans included.</p>
-                <a href="#" class="cta-button">
+                <a href="#" class="app-store-badge">
                     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
                 </a>
             </div>
@@ -106,5 +136,19 @@
             </div>
         </div>
     </footer>
+    <script>
+        // Nav scroll state
+        const nav = document.querySelector('nav');
+        const hero = document.querySelector('.hero');
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                nav.classList.toggle('scrolled', !entry.isIntersecting);
+            },
+            { threshold: 0.1 }
+        );
+
+        observer.observe(hero);
+    </script>
 </body>
 </html>
