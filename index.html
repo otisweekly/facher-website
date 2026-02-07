@@ -25,16 +25,11 @@
     </nav>
 
     <main>
-        <!-- Hero with animated shelf -->
+        <!-- Hero — Full screen animated shelf with minimal typography -->
         <section class="hero">
             <div class="hero-background"></div>
-            <div class="hero-content">
-                <img src="/logo.svg" alt="Fach" class="hero-logo">
-                <h1 class="hero-tagline">Obsess properly.</h1>
-                <p class="hero-subtitle">Your personal collection catalog.</p>
-            </div>
 
-            <!-- Animated shelf spines -->
+            <!-- Full screen animated shelf -->
             <div class="shelf-animation">
                 <div class="spine vinyl" style="--delay: 0"></div>
                 <div class="spine book" style="--delay: 1"></div>
@@ -48,6 +43,20 @@
                 <div class="spine book" style="--delay: 9"></div>
                 <div class="spine gap"></div>
                 <div class="spine book leaner" style="--delay: 10"></div>
+                <div class="spine vinyl" style="--delay: 11"></div>
+                <div class="spine book" style="--delay: 12"></div>
+                <div class="spine vinyl" style="--delay: 13"></div>
+                <div class="spine book tall" style="--delay: 14"></div>
+                <div class="spine vinyl" style="--delay: 15"></div>
+                <div class="spine book wide" style="--delay: 16"></div>
+                <div class="spine vinyl" style="--delay: 17"></div>
+                <div class="spine book" style="--delay: 18"></div>
+            </div>
+
+            <!-- Minimal typography in negative space -->
+            <div class="hero-content">
+                <h1 class="hero-tagline">Obsess properly.</h1>
+                <p class="hero-subtitle">Your personal collection catalog.</p>
             </div>
 
             <a href="#download" class="scroll-hint">
@@ -60,6 +69,10 @@
 
         <!-- Features -->
         <section class="features" id="download">
+            <div class="features-header">
+                <p class="features-eyebrow">What it does</p>
+                <h2>Everything in its place.</h2>
+            </div>
             <div class="features-grid">
                 <div class="feature">
                     <div class="feature-icon">
@@ -69,19 +82,18 @@
                             <rect x="7" y="7" width="10" height="10" rx="1"/>
                         </svg>
                     </div>
-                    <h3>Scan to add</h3>
-                    <p>Point your camera at any item. Scan barcodes or snap a photo—we'll identify it.</p>
+                    <h3>Scan anything</h3>
+                    <p>Point your camera at a cover or barcode. We'll identify it across 31 categories—books, vinyl, magazines, cameras, watches, and more.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
-                            <path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/>
-                            <path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/>
-                            <path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/>
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
                         </svg>
                     </div>
-                    <h3>Rich metadata</h3>
-                    <p>Track lists, synopses, cover art—fetched automatically. Everything you need.</p>
+                    <h3>Daily picks</h3>
+                    <p>Get mood-based recommendations every day. What to read when it's raining. What to spin during a full moon. Pulled from your own collection.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">
@@ -89,8 +101,29 @@
                             <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
                         </svg>
                     </div>
-                    <h3>Sync everywhere</h3>
-                    <p>Your collection syncs across devices. Sign in with Apple to keep it backed up.</p>
+                    <h3>Everywhere you are</h3>
+                    <p>Sign in with Apple and your collection syncs across all your devices. Never lose track of what you own.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Showcase Section -->
+        <section class="showcase">
+            <div class="showcase-inner">
+                <div class="showcase-card">
+                    <div class="showcase-icon">🍽️</div>
+                    <h3>Supper Club</h3>
+                    <p>Planning a dinner party? Pick your cookbooks and let Fach generate a complete menu with wine pairings and a curated playlist.</p>
+                </div>
+                <div class="showcase-card">
+                    <div class="showcase-icon">🎵</div>
+                    <h3>Apple Music</h3>
+                    <p>Your vinyl collection connects to Apple Music. One tap to play any record digitally—no turntable required.</p>
+                </div>
+                <div class="showcase-card">
+                    <div class="showcase-icon">💬</div>
+                    <h3>Chat with your shelf</h3>
+                    <p>Ask questions about your collection. "What should I read next?" or "Show me my first edition hardcovers."</p>
                 </div>
             </div>
         </section>
@@ -98,8 +131,8 @@
         <!-- Collections -->
         <section class="collections">
             <div class="collections-inner">
-                <h2>Your shelf, your rules.</h2>
-                <p class="collections-subtitle">Create shelves for anything you collect.</p>
+                <p class="collections-eyebrow">31 categories</p>
+                <h2>Whatever you collect.</h2>
                 <div class="pills">
                     <span class="pill">Books</span>
                     <span class="pill">Vinyl</span>
@@ -107,6 +140,10 @@
                     <span class="pill">Art</span>
                     <span class="pill">Cameras</span>
                     <span class="pill">Watches</span>
+                    <span class="pill">Toys</span>
+                    <span class="pill">Games</span>
+                    <span class="pill">Film</span>
+                    <span class="pill">Comics</span>
                 </div>
             </div>
         </section>
@@ -114,8 +151,8 @@
         <!-- CTA -->
         <section class="cta">
             <div class="cta-inner">
-                <h2>Start cataloging today.</h2>
-                <p>Free to download. Your first 10 scans included.</p>
+                <h2>Start cataloging.</h2>
+                <p>Free to download. Your first 10 scans on us.</p>
                 <a href="#" class="app-store-badge">
                     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
                 </a>
