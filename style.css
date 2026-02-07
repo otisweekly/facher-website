@@ -602,7 +602,7 @@ nav.scrolled .nav-links a {
 footer {
     background: var(--fach-card);
     border-top: 1px solid var(--fach-divider);
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 1.5rem;
 }
 
 .footer-container {
@@ -611,6 +611,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 1.5rem;
 }
 
 .footer-brand p {
@@ -827,11 +828,15 @@ footer {
     .footer-container {
         flex-direction: column;
         text-align: center;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .footer-links {
         justify-content: center;
+    }
+
+    footer {
+        padding: 2rem 1.5rem;
     }
 }
 
