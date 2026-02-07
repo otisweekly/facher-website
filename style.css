@@ -232,7 +232,7 @@ nav.scrolled .nav-links a {
 
 /* Gap before leaner — sized so leaner rests against neighbor when tilted */
 .spine-gap {
-    width: 50px;
+    width: 34px;
     flex-shrink: 0;
 }
 
@@ -958,7 +958,7 @@ footer {
     .spine.s9  { width: 44px; height: min(288px, 40vh); }
     .spine.s10 { width: 44px; height: min(354px, 50vh); }
     .spine.s11 { width: 44px; height: min(309px, 44vh); }
-    .spine-gap { width: 30px; }
+    .spine-gap { width: 20px; }
 
     .scroll-hint {
         right: 1.25rem;
